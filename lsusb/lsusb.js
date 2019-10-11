@@ -9,7 +9,7 @@ const deviceButtonPressed = document.getElementById("deviceButtonPressed");
 
 
 
-connectButton.onclick = async () => {
+//connectButton.onclick = async () => {
     navigator.usb.getDevices().then(devices => {
         devices.map(device => {
             console.log("Vendor ID = 0x" + device.vendorId.toString(16) + " : " + device.manufacturerName);
@@ -117,4 +117,4 @@ connectButton.onclick = async () => {
             console.log("")
         });
     })
-}
+//}
