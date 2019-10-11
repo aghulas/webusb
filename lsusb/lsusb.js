@@ -7,11 +7,12 @@ const connect = document.getElementById("connect");
 const deviceHeartbeat = document.getElementById("deviceHeartbeat");
 const deviceButtonPressed = document.getElementById("deviceButtonPressed");
 
-
+const filters = [
+        { vndorId: 0x04d8, prouctId: 0xffee }, // RLY02
+]
 
 connectButton.onclick = async () => {
-    navigator.usb.getDevices().then(devices => {
-        devices.map(device => {
+    navigator.usb.requestDevice({ filters: filters} ).then(device => {
             console.log("Vendor ID = 0x" + device.vendorId.toString(16) + " : " + device.manufacturerName);
             console.log("Product ID = 0x" + device.productId.toString(16) + " : " + device.productName);
             console.log("Serial = " + device.serialNumber)
@@ -115,6 +116,5 @@ connectButton.onclick = async () => {
                 });
             });
             console.log("")
-        });
     })
 }
